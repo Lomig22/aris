@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  ARIS — Conception Bâtiment · Cantons de Vaud · Suisse
+  Site vitrine one-page — fichier unique, zéro dépendance externe
+  (Google Fonts uniquement, via @import CSS)
+
+  NOTES POUR LE CLIENT :
+  · Remplacer les placeholders de la galerie par de vraies photos
+    de réalisations dès qu'elles sont disponibles.
+  · Remplacer mel.dav@gmail.com par une adresse professionnelle
+    @aris-conception.ch ou @aris-batiment.ch — fortement recommandé
+    pour la crédibilité sur le marché suisse haut de gamme.
+  · Activer le formulaire via Web3Forms ou Formspree
+    (voir le commentaire dans la balise <form> plus bas).
+  · Vérifier la raison sociale exacte d'ARIS pour les mentions
+    légales (entreprise individuelle, Sàrl…).
+  ═══════════════════════════════════════════════════════════════════
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIS — Conception Bâtiment · Designer de bâtiment · Cantons de Vaud, Suisse</title>
+<meta name="description" content="ARIS — Conception bâtiment, design d'espaces et suivi de projet dans les cantons de Vaud : Lausanne, Nyon, Morges, Vevey, Montreux. Premier échange offert.">
+<meta property="og:title" content="ARIS — Conception Bâtiment · Cantons de Vaud">
+<meta property="og:description" content="Design de bâtiment, conception d'espaces et suivi de projet en Suisse romande. Une approche rigoureuse, du premier plan à la livraison.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232C3E50'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23FAFAFA' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   1. FONTS & TOKENS
+   ══════════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* Palette — 6 tokens, seules sources de couleur du site */
+  --blanc:   #FAFAFA; /* fond principal — blanc suisse */
+  --ardoise: #2C3E50; /* accent signature — ardoise bleutée */
+  --charbon: #1A2530; /* texte principal — charbon profond */
+  --brume:   #F0EEE9; /* sections alternées — brume du Léman */
+  --ciment:  #8C9BA5; /* texte secondaire — ciment gris-bleu */
+  --bois:    #B8956A; /* accent chaud — bois clair vaudois */
+
+  /* Typographies */
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Rythme & transitions */
+  --ease-noble: cubic-bezier(0.16, 1, 0.3, 1);
+  --header-h: 76px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   2. RESET & BASE
+   ══════════════════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--charbon);
+  background-color: var(--blanc);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+::selection { background: var(--ardoise); color: var(--blanc); }
+
+:focus-visible {
+  outline: 2px solid var(--ardoise);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   3. TRAME DE COTES ARCHITECTURALES (signature visuelle)
+   Lignes fines terminées par une double barre courte (4px),
+   comme les traits de cote d'un plan architectural.
+   Espacements variables — tuile 300×220 en repeat.
+   NB : la couleur est figée à #2C3E50 (= --ardoise) car un data-URI
+   SVG ne peut pas lire les variables CSS.
+   ══════════════════════════════════════════════════════════════════ */
+.trame {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='220'%3E%3Cpath%20d='M25,40H185M25,38v4M28,38v4M182,38v4M185,38v4M60,105H250M60,103v4M63,103v4M247,103v4M250,103v4M15,200H130M15,198v4M18,198v4M127,198v4M130,198v4M45,60V170M43,60h4M43,63h4M43,167h4M43,170h4M220,20V85M218,20h4M218,23h4M218,82h4M218,85h4M280,120V215M278,120h4M278,123h4M278,212h4M278,215h4'%20fill='none'%20stroke='%232C3E50'%20stroke-opacity='0.04'%20stroke-width='0.6'/%3E%3C/svg%3E");
+  background-size: 300px 220px;
+  background-repeat: repeat;
+}
+/* Variante hero — opacité réduite à 0.03 pour une épure maximale */
+.trame-hero {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='220'%3E%3Cpath%20d='M25,40H185M25,38v4M28,38v4M182,38v4M185,38v4M60,105H250M60,103v4M63,103v4M247,103v4M250,103v4M15,200H130M15,198v4M18,198v4M127,198v4M130,198v4M45,60V170M43,60h4M43,63h4M43,167h4M43,170h4M220,20V85M218,20h4M218,23h4M218,82h4M218,85h4M280,120V215M278,120h4M278,123h4M278,212h4M278,215h4'%20fill='none'%20stroke='%232C3E50'%20stroke-opacity='0.03'%20stroke-width='0.6'/%3E%3C/svg%3E");
+  background-size: 300px 220px;
+  background-repeat: repeat;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   4. TYPOGRAPHIE COMMUNE
+   ══════════════════════════════════════════════════════════════════ */
+.eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ardoise);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.15;
+  color: var(--charbon);
+  margin-bottom: 24px;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   5. BOUTONS — radius 2px, angles quasi-droits (rigueur suisse)
+   ══════════════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  border-radius: 2px;
+  padding: 14px 36px;
+  transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, opacity 0.3s ease;
+  text-align: center;
+}
+.btn-plein {
+  background-color: var(--ardoise);
+  color: var(--blanc);
+}
+.btn-plein:hover { background-color: var(--charbon); }
+.btn-ligne {
+  background-color: transparent;
+  border: 1px solid var(--charbon);
+  color: var(--charbon);
+}
+.btn-ligne:hover {
+  border-color: var(--ardoise);
+  color: var(--ardoise);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   6. HEADER FIXE
+   ══════════════════════════════════════════════════════════════════ */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background-color: transparent;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease,
+              backdrop-filter 0.4s ease;
+}
+.header.scrolled {
+  background-color: rgba(250, 250, 250, 0.97);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(44, 62, 80, 0.08);
+}
+.header-inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logo texte : ARIS | CONCEPTION BÂTIMENT */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.logo-nom {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charbon);
+  line-height: 1;
+}
+.logo-trait {
+  width: 1px;
+  height: 26px;
+  background-color: var(--ardoise);
+  opacity: 0.3;
+}
+.logo-sous {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ciment);
+  line-height: 1.3;
+}
+
+/* Navigation desktop */
+.nav-desktop { display: none; }
+.nav-desktop ul {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+.nav-desktop a {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--ciment);
+  transition: color 0.3s ease;
+}
+.nav-desktop a:hover,
+.nav-desktop a.actif { color: var(--ardoise); }
+
+.header-cta {
+  display: none;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  padding: 9px 22px;
+  border-radius: 2px;
+  background-color: var(--ardoise);
+  color: var(--blanc);
+  transition: background-color 0.3s ease;
+}
+.header-cta:hover { background-color: var(--charbon); }
+
+/* Hamburger — deux traits fins */
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  z-index: 102;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--charbon);
+  transition: transform 0.4s var(--ease-noble), opacity 0.3s ease;
+}
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+/* Overlay mobile fullscreen */
+.nav-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  background-color: var(--blanc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.nav-mobile.ouvert { opacity: 1; visibility: visible; }
+.nav-mobile a {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 30px;
+  color: var(--charbon);
+  padding: 10px 20px;
+  transition: color 0.3s ease;
+}
+.nav-mobile a:hover { color: var(--ardoise); }
+.nav-mobile .nav-mobile-cta {
+  margin-top: 24px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  background-color: var(--ardoise);
+  color: var(--blanc);
+  border-radius: 2px;
+  padding: 14px 36px;
+}
+.nav-mobile-villes {
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--ciment);
+  letter-spacing: 0.06em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   7. HERO — élégance architecturale, texte centré, épure maximale
+   ══════════════════════════════════════════════════════════════════ */
+.hero {
+  background-color: var(--blanc);
+  padding: 100px 0 90px;
+  text-align: center;
+}
+.hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-top: var(--header-h);
+}
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ardoise);
+  margin-bottom: 34px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.7rem, 8vw, 4.8rem);
+  line-height: 1.0;
+  color: var(--charbon);
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ardoise);
+}
+.hero-trait {
+  width: 48px;
+  height: 1px;
+  background-color: var(--ardoise);
+  opacity: 0.2;
+  margin: 36px auto;
+}
+.hero-sous {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--ciment);
+  max-width: 520px;
+  margin: 0 auto 44px;
+}
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 44px;
+}
+.hero-villes {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--ciment);
+  letter-spacing: 0.06em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   8. SECTIONS GÉNÉRIQUES
+   ══════════════════════════════════════════════════════════════════ */
+.section { padding: 90px 0; }
+.section-brume { background-color: var(--brume); }
+
+/* ══════════════════════════════════════════════════════════════════
+   9. SECTION CONCEPTION — 3 colonnes, séparées par de fines lignes
+   (pas de cards : fond transparent, border-right uniquement)
+   ══════════════════════════════════════════════════════════════════ */
+.conception-grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 48px;
+}
+.conception-col {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+}
+.conception-col:last-child { border-bottom: none; }
+.conception-num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--ardoise);
+  opacity: 0.3;
+  margin-bottom: 18px;
+}
+.conception-col h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--charbon);
+  margin-bottom: 12px;
+}
+.conception-col p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ciment);
+  max-width: 300px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   10. SECTION RÉALISATIONS — galerie asymétrique
+   ══════════════════════════════════════════════════════════════════ */
+.galerie {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin-top: 48px;
+}
+.galerie-item {
+  position: relative;
+  background-color: var(--brume);
+  min-height: 240px;
+  overflow: hidden;
+}
+.galerie-item:first-child { min-height: 320px; }
+
+/* Motif discret dans le placeholder : numéro + label */
+.galerie-num {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--bois);
+}
+.galerie-label {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  right: 22px;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--ciment);
+}
+
+/* Overlay hover — charbon 50 % + titre Cormorant italic centré */
+.galerie-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(26, 37, 48, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-noble);
+}
+.galerie-overlay span {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--blanc);
+}
+@media (hover: hover) {
+  .galerie-item:hover .galerie-overlay,
+  .galerie-item:focus-within .galerie-overlay { opacity: 1; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   11. SECTION APPROCHE — texte + bloc citation
+   ══════════════════════════════════════════════════════════════════ */
+.approche-grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 44px;
+  margin-top: 40px;
+}
+.approche-texte p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ciment);
+  margin-bottom: 22px;
+}
+.approche-texte p:last-child { margin-bottom: 0; }
+.approche-citation {
+  background-color: var(--blanc);
+  border-left: 2px solid var(--ardoise);
+  padding: 28px;
+  align-self: start;
+}
+.approche-citation blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ardoise);
+  margin-bottom: 18px;
+}
+.approche-citation cite {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ciment);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   12. SECTION PROCESSUS — 4 étapes
+   ══════════════════════════════════════════════════════════════════ */
+.processus-grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  margin-top: 48px;
+}
+.etape {
+  border-top: 1px solid rgba(44, 62, 80, 0.15);
+  padding-top: 24px;
+}
+.etape-num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--ardoise);
+  opacity: 0.35;
+  margin-bottom: 14px;
+}
+.etape h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--charbon);
+  margin-bottom: 10px;
+}
+.etape p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ciment);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   13. SECTION TÉMOIGNAGES — 3 colonnes texte pur
+   ══════════════════════════════════════════════════════════════════ */
+.temoignages-grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 48px;
+}
+.temoignage {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.08);
+}
+.temoignage:last-child { border-bottom: none; }
+.temoignage blockquote {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--charbon);
+  margin-bottom: 18px;
+}
+.temoignage blockquote::before { content: "«\00A0"; color: var(--ardoise); }
+.temoignage blockquote::after  { content: "\00A0»"; color: var(--ardoise); }
+.temoignage cite {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ciment);
+}
+.temoignage cite::before { content: "— "; color: var(--bois); }
+
+/* ══════════════════════════════════════════════════════════════════
+   14. SECTION CONTACT
+   ══════════════════════════════════════════════════════════════════ */
+.contact-tete { text-align: center; }
+.contact-sous {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--ciment);
+  letter-spacing: 0.04em;
+}
+.contact-grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 52px;
+  max-width: 860px;
+  margin: 56px auto 0;
+}
+
+/* Bloc gauche — contacts directs, texte posé */
+.contact-infos > * { margin-bottom: 26px; }
+.contact-tel {
+  display: inline-block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ardoise);
+  transition: color 0.3s ease;
+}
+.contact-tel:hover { color: var(--charbon); }
+.contact-email {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--ciment);
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.contact-email:hover {
+  color: var(--ardoise);
+  border-bottom-color: var(--bois);
+}
+.contact-zone {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ciment);
+}
+.contact-label {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ardoise);
+  margin-bottom: 8px;
+}
+
+/* Formulaire */
+.form-groupe { margin-bottom: 16px; }
+.form-groupe label {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--charbon);
+  margin-bottom: 6px;
+}
+.form-groupe input,
+.form-groupe select,
+.form-groupe textarea {
+  width: 100%;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--charbon);
+  background-color: var(--brume);
+  border: 1px solid rgba(44, 62, 80, 0.15);
+  border-radius: 2px;
+  padding: 11px 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-groupe textarea { resize: vertical; min-height: 120px; }
+.form-groupe input:focus,
+.form-groupe select:focus,
+.form-groupe textarea:focus {
+  outline: none;
+  border-color: var(--ardoise);
+  box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.08);
+}
+.form-groupe select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='10'%20height='6'%3E%3Cpath%20d='M1,1l4,4l4,-4'%20fill='none'%20stroke='%238C9BA5'%20stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.form-duo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px 14px;
+}
+.form-envoyer {
+  width: 100%;
+  margin-top: 8px;
+}
+.form-merci {
+  display: none;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19px;
+  color: var(--ardoise);
+  text-align: center;
+  padding: 18px 0 4px;
+}
+.form-merci.visible { display: block; }
+
+/* ══════════════════════════════════════════════════════════════════
+   15. FOOTER
+   ══════════════════════════════════════════════════════════════════ */
+.footer {
+  background-color: var(--brume);
+  border-top: 1px solid rgba(44, 62, 80, 0.15);
+  padding: 56px 0 36px;
+}
+.footer-haut {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.08);
+  margin-bottom: 24px;
+}
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--ciment);
+}
+.footer-contact a { transition: color 0.3s ease; }
+.footer-contact a:hover { color: var(--ardoise); }
+.footer-zone {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--ciment);
+}
+.footer-bas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--ciment);
+}
+.footer-bas .credit { font-size: 11px; opacity: 0.8; }
+
+/* ══════════════════════════════════════════════════════════════════
+   16. SCROLL REVEAL — lent et noble
+   Stagger : chaque élément porte --d (délai) en style inline.
+   ══════════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--ease-noble) var(--d, 0s),
+              transform 0.8s var(--ease-noble) var(--d, 0s);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .burger span, .nav-mobile, .galerie-overlay { transition: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   17. RESPONSIVE — mobile-first : 480 / 768 / 1024 / 1280
+   ══════════════════════════════════════════════════════════════════ */
+@media (min-width: 480px) {
+  .hero-ctas { flex-direction: row; justify-content: center; }
+  .form-duo { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 768px) {
+  .section { padding: 110px 0; }
+  .hero { padding: 130px 0 110px; }
+  .hero-inner { padding-top: var(--header-h); }
+
+  /* Conception : 3 colonnes séparées par de fines lignes verticales */
+  .conception-grille { grid-template-columns: repeat(3, 1fr); }
+  .conception-col {
+    border-bottom: none;
+    padding: 8px 28px 8px 0;
+  }
+  .conception-col + .conception-col { padding-left: 28px; }
+  .conception-col:nth-child(1),
+  .conception-col:nth-child(2) {
+    border-right: 1px solid rgba(44, 62, 80, 0.1);
+  }
+
+  /* Galerie asymétrique */
+  .galerie {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-rows: 260px 260px;
+  }
+  .galerie-item { min-height: 0; }
+  .galerie-item:first-child { grid-row: 1 / 3; min-height: 0; }
+
+  .processus-grille { grid-template-columns: repeat(2, 1fr); gap: 44px 36px; }
+
+  .footer-haut {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-bas {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-desktop { display: block; }
+  .header-cta { display: inline-block; }
+  .burger { display: none; }
+
+  .section { padding: 130px 0; }
+  .hero { padding: 160px 0 130px; }
+
+  /* Approche : texte 55 % / citation 45 % */
+  .approche-grille { grid-template-columns: 55fr 45fr; gap: 64px; }
+
+  /* Processus : 4 étapes horizontales */
+  .processus-grille { grid-template-columns: repeat(4, 1fr); gap: 36px; }
+
+  /* Témoignages : 3 colonnes séparées par des traits verticaux */
+  .temoignages-grille { grid-template-columns: repeat(3, 1fr); }
+  .temoignage {
+    border-bottom: none;
+    padding: 8px 32px 8px 0;
+  }
+  .temoignage + .temoignage { padding-left: 32px; }
+  .temoignage:nth-child(1),
+  .temoignage:nth-child(2) {
+    border-right: 1px solid rgba(44, 62, 80, 0.08);
+  }
+
+  /* Contact : 2 colonnes */
+  .contact-grille { grid-template-columns: 1fr 1.25fr; gap: 72px; }
+}
+
+@media (min-width: 1280px) {
+  .container { max-width: 1240px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════════════ 1. HEADER FIXE ═════════════════ -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#haut" class="logo" aria-label="ARIS Conception Bâtiment — retour en haut">
+      <span class="logo-nom">Aris</span>
+      <span class="logo-trait" aria-hidden="true"></span>
+      <span class="logo-sous">Conception<br>Bâtiment</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#conception">Conception</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#a-propos">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="#contact" class="header-cta">Prendre contact</a>
+
+    <button class="burger" id="burger" aria-expanded="false"
+            aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Overlay navigation mobile -->
+<nav class="nav-mobile" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="#conception">Conception</a>
+  <a href="#realisations">Réalisations</a>
+  <a href="#a-propos">À propos</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="nav-mobile-cta">Prendre contact</a>
+  <p class="nav-mobile-villes">Lausanne · Nyon · Morges · Vevey · Montreux</p>
+</nav>
+
+<main id="haut">
+
+  <!-- ═════════════════ 2. HERO ═════════════════ -->
+  <section class="hero trame-hero">
+    <div class="container">
+      <div class="hero-inner">
+        <p class="hero-eyebrow reveal">Conception bâtiment · Cantons de Vaud · Suisse</p>
+        <h1 class="reveal" style="--d:0.12s">
+          Concevoir des espaces<br>
+          <em>qui durent.</em>
+        </h1>
+        <div class="hero-trait reveal" style="--d:0.24s" aria-hidden="true"></div>
+        <p class="hero-sous reveal" style="--d:0.36s">
+          Design de bâtiment, conception d'espaces et suivi de projet dans les
+          cantons de Vaud. Une approche rigoureuse, du premier plan à la livraison.
+        </p>
+        <div class="hero-ctas reveal" style="--d:0.48s">
+          <a href="#contact" class="btn btn-plein">Discuter d'un projet</a>
+          <a href="#realisations" class="btn btn-ligne">Voir les réalisations</a>
+        </div>
+        <p class="hero-villes reveal" style="--d:0.6s">
+          Lausanne · Nyon · Morges · Vevey · Montreux
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════ 3. CONCEPTION — SERVICES ═════════════════ -->
+  <section class="section section-brume trame" id="conception">
+    <div class="container">
+      <p class="eyebrow reveal">Conception</p>
+      <h2 class="section-title reveal" style="--d:0.12s">De l'idée au bâtiment.</h2>
+
+      <div class="conception-grille">
+        <div class="conception-col reveal">
+          <p class="conception-num" aria-hidden="true">01</p>
+          <h3>Conception</h3>
+          <p>Études architecturales, plans, élévations, coupes.
+             Du cahier des charges à l'ensemble des documents
+             nécessaires à la réalisation.</p>
+        </div>
+        <div class="conception-col reveal" style="--d:0.12s">
+          <p class="conception-num" aria-hidden="true">02</p>
+          <h3>Design d'intérieur</h3>
+          <p>Conception des espaces, choix des matériaux,
+             mobilier et lumière. Une vision globale de chaque
+             pièce, pensée dans ses moindres détails.</p>
+        </div>
+        <div class="conception-col reveal" style="--d:0.24s">
+          <p class="conception-num" aria-hidden="true">03</p>
+          <h3>Coordination &amp; suivi</h3>
+          <p>Coordination des entreprises et artisans,
+             suivi de chantier, contrôle de la conformité.
+             Un interlocuteur unique du début à la fin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════ 4. RÉALISATIONS ═════════════════ -->
+  <section class="section" id="realisations">
+    <div class="container">
+      <p class="eyebrow reveal">Réalisations</p>
+      <h2 class="section-title reveal" style="--d:0.12s">
+        <em>Quelques projets réalisés en Suisse romande.</em>
+      </h2>
+
+      <!--
+        Placeholders — remplacer chaque .galerie-item par une vraie photo :
+        <img src="..." alt="..."> en object-fit: cover, en conservant l'overlay.
+      -->
+      <div class="galerie">
+        <div class="galerie-item reveal" tabindex="0">
+          <span class="galerie-num" aria-hidden="true">I</span>
+          <span class="galerie-label">Villa contemporaine — cantons de Vaud</span>
+          <div class="galerie-overlay"><span>Villa contemporaine<br>cantons de Vaud</span></div>
+        </div>
+        <div class="galerie-item reveal" style="--d:0.12s" tabindex="0">
+          <span class="galerie-num" aria-hidden="true">II</span>
+          <span class="galerie-label">Rénovation intérieure — Lausanne</span>
+          <div class="galerie-overlay"><span>Rénovation intérieure<br>Lausanne</span></div>
+        </div>
+        <div class="galerie-item reveal" style="--d:0.24s" tabindex="0">
+          <span class="galerie-num" aria-hidden="true">III</span>
+          <span class="galerie-label">Maison lakeside — région du Léman</span>
+          <div class="galerie-overlay"><span>Maison lakeside<br>région du Léman</span></div>
+        </div>
+        <div class="galerie-item reveal" style="--d:0.36s" tabindex="0">
+          <span class="galerie-num" aria-hidden="true">IV</span>
+          <span class="galerie-label">Aménagement d'espaces — Nyon</span>
+          <div class="galerie-overlay"><span>Aménagement d'espaces<br>Nyon</span></div>
+        </div>
+        <div class="galerie-item reveal" style="--d:0.48s" tabindex="0">
+          <span class="galerie-num" aria-hidden="true">V</span>
+          <span class="galerie-label">Conception — projet résidentiel</span>
+          <div class="galerie-overlay"><span>Conception<br>projet résidentiel</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════ 5. APPROCHE ═════════════════ -->
+  <section class="section section-brume trame" id="a-propos">
+    <div class="container">
+      <p class="eyebrow reveal">Notre approche</p>
+      <h2 class="section-title reveal" style="--d:0.12s">
+        La rigueur suisse, au service de votre vision.
+      </h2>
+
+      <div class="approche-grille">
+        <div class="approche-texte reveal">
+          <p>Chaque projet commence par une écoute approfondie — comprendre
+             votre mode de vie, vos contraintes, vos aspirations. La conception
+             qui en résulte est rigoureuse dans ses plans, précise dans ses
+             détails, et durable dans ses choix de matériaux.</p>
+          <p>Dans les cantons de Vaud, nous intervenons sur des projets
+             résidentiels exigeants — villas, rénovations de standing,
+             aménagements d'appartements contemporains.</p>
+        </div>
+        <div class="approche-citation reveal" style="--d:0.12s">
+          <blockquote>Un bâtiment bien conçu n'a pas à se justifier —
+            il s'impose naturellement dans son environnement.</blockquote>
+          <cite>— ARIS, Conception Bâtiment</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════ 6. PROCESSUS ═════════════════ -->
+  <section class="section" id="processus">
+    <div class="container">
+      <p class="eyebrow reveal">Notre processus</p>
+      <h2 class="section-title reveal" style="--d:0.12s">Un projet, étape par étape.</h2>
+
+      <div class="processus-grille">
+        <div class="etape reveal">
+          <p class="etape-num" aria-hidden="true">01</p>
+          <h3>Premier échange</h3>
+          <p>Prise de contact, écoute de votre projet, visite du site
+             ou du bien. Gratuit, sans engagement.</p>
+        </div>
+        <div class="etape reveal" style="--d:0.12s">
+          <p class="etape-num" aria-hidden="true">02</p>
+          <h3>Études &amp; plans</h3>
+          <p>Proposition de concept, plans, rendus, estimatif.
+             Toutes les clés pour prendre votre décision.</p>
+        </div>
+        <div class="etape reveal" style="--d:0.24s">
+          <p class="etape-num" aria-hidden="true">03</p>
+          <h3>Coordination</h3>
+          <p>Consultation des entreprises, suivi du chantier,
+             validation des étapes de réalisation.</p>
+        </div>
+        <div class="etape reveal" style="--d:0.36s">
+          <p class="etape-num" aria-hidden="true">04</p>
+          <h3>Livraison</h3>
+          <p>Réception du projet, contrôle de la conformité. Un bâtiment
+             livré selon les plans, dans les délais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════ 7. TÉMOIGNAGES ═════════════════ -->
+  <section class="section section-brume trame" id="temoignages">
+    <div class="container">
+      <h2 class="section-title reveal"><em>Ils nous ont fait confiance.</em></h2>
+
+      <div class="temoignages-grille">
+        <div class="temoignage reveal">
+          <blockquote>ARIS a conçu notre villa à Nyon avec une précision et
+            une sensibilité que nous n'avions trouvées nulle part ailleurs.
+            Chaque détail a été pensé. Le résultat dépasse ce que nous
+            espérions.</blockquote>
+          <cite>Famille Rossier, Nyon (VD)</cite>
+        </div>
+        <div class="temoignage reveal" style="--d:0.12s">
+          <blockquote>Un suivi de chantier exemplaire — ARIS a coordonné
+            l'ensemble des entreprises avec une rigueur suisse qui a fait
+            la différence sur les délais et la qualité de finition.</blockquote>
+          <cite>M. &amp; Mme Perret, Morges (VD)</cite>
+        </div>
+        <div class="temoignage reveal" style="--d:0.24s">
+          <blockquote>La rénovation de notre appartement à Lausanne a été
+            entièrement repensée par ARIS. Espace optimisé, matériaux soignés,
+            résultat contemporain et chaleureux à la fois.</blockquote>
+          <cite>Thomas B., Lausanne (VD)</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════ 8. CONTACT ═════════════════ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-tete">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="section-title reveal" style="--d:0.12s"><em>Parlons de votre projet.</em></h2>
+        <p class="contact-sous reveal" style="--d:0.24s">
+          Premier échange offert · Cantons de Vaud · Suisse
+        </p>
+      </div>
+
+      <div class="contact-grille">
+        <!-- Bloc gauche — contacts directs -->
+        <div class="contact-infos reveal">
+          <div>
+            <p class="contact-label">Téléphone</p>
+            <a href="tel:+41793921426" class="contact-tel">+41 79 392 14 26</a>
+          </div>
+          <div>
+            <p class="contact-label">Email</p>
+            <a href="mailto:mel.dav@gmail.com" class="contact-email">mel.dav@gmail.com</a>
+          </div>
+          <div>
+            <p class="contact-label">Zone d'intervention</p>
+            <p class="contact-zone">Lausanne · Nyon · Morges · Vevey · Montreux<br>
+               et cantons limitrophes</p>
+          </div>
+        </div>
+
+        <!-- Bloc droit — formulaire -->
+        <!--
+          ACTIVATION DU FORMULAIRE (Web3Forms) :
+          1. Créer une clé sur https://web3forms.com (gratuit)
+          2. Remplacer l'attribut action par :
+             action="https://api.web3forms.com/submit" method="POST"
+          3. Ajouter dans le <form> :
+             <input type="hidden" name="access_key" value="VOTRE_CLE">
+          4. Supprimer le gestionnaire "submit" dans le script en bas de page.
+        -->
+        <form class="contact-form reveal" style="--d:0.12s" id="form" novalidate>
+          <div class="form-duo">
+            <div class="form-groupe">
+              <label for="f-nom">Prénom &amp; Nom</label>
+              <input type="text" id="f-nom" name="nom" autocomplete="name" required>
+            </div>
+            <div class="form-groupe">
+              <label for="f-tel">Téléphone</label>
+              <input type="tel" id="f-tel" name="telephone" autocomplete="tel" required>
+            </div>
+          </div>
+          <div class="form-groupe">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="form-duo">
+            <div class="form-groupe">
+              <label for="f-type">Type de projet</label>
+              <select id="f-type" name="type_projet" required>
+                <option value="" selected disabled>Sélectionner…</option>
+                <option>Construction neuve</option>
+                <option>Rénovation</option>
+                <option>Design d'intérieur</option>
+                <option>Extension &amp; surélévation</option>
+                <option>Coordination de chantier</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-groupe">
+              <label for="f-lieu">Localisation du projet</label>
+              <input type="text" id="f-lieu" name="localisation" placeholder="Ex. Lausanne, Nyon…">
+            </div>
+          </div>
+          <div class="form-groupe">
+            <label for="f-desc">Description du projet</label>
+            <textarea id="f-desc" name="description" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-plein form-envoyer">Envoyer ma demande</button>
+          <p class="form-merci" id="form-merci" role="status">
+            Merci — votre demande a bien été enregistrée.
+            Nous revenons vers vous très rapidement.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═════════════════ 9. FOOTER ═════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-haut">
+      <div class="logo">
+        <span class="logo-nom">Aris</span>
+        <span class="logo-trait" aria-hidden="true"></span>
+        <span class="logo-sous">Conception<br>Bâtiment</span>
+      </div>
+      <p class="footer-zone">Cantons de Vaud · Suisse romande</p>
+      <div class="footer-contact">
+        <a href="tel:+41793921426">+41 79 392 14 26</a>
+        <a href="mailto:mel.dav@gmail.com">mel.dav@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>© 2026 ARIS Conception Bâtiment — Tous droits réservés</p>
+      <p class="credit">Site réalisé par Payment Flow</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+/* ────────────────────────────────────────────────────────────────
+   1. HEADER — transparent → blanc 97 % + blur après 80 px de scroll
+   ──────────────────────────────────────────────────────────────── */
+(function () {
+  var header = document.getElementById('header');
+  function majHeader() {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  }
+  window.addEventListener('scroll', majHeader, { passive: true });
+  majHeader();
+})();
+
+/* ────────────────────────────────────────────────────────────────
+   2. NAVIGATION MOBILE — hamburger + overlay fullscreen
+   ──────────────────────────────────────────────────────────────── */
+(function () {
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav-mobile');
+
+  function fermer() {
+    nav.classList.remove('ouvert');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Ouvrir le menu');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', function () {
+    var ouvert = nav.classList.toggle('ouvert');
+    burger.setAttribute('aria-expanded', String(ouvert));
+    burger.setAttribute('aria-label', ouvert ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.style.overflow = ouvert ? 'hidden' : '';
+  });
+
+  /* Fermer l'overlay au clic sur un lien */
+  nav.querySelectorAll('a').forEach(function (lien) {
+    lien.addEventListener('click', fermer);
+  });
+
+  /* Fermer avec la touche Échap */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('ouvert')) fermer();
+  });
+})();
+
+/* ────────────────────────────────────────────────────────────────
+   3. SCROLL REVEAL — IntersectionObserver vanilla
+   .reveal → .revealed (le stagger vient de --d en style inline)
+   ──────────────────────────────────────────────────────────────── */
+(function () {
+  var cibles = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    cibles.forEach(function (el) { el.classList.add('revealed'); });
+    return;
+  }
+  var observateur = new IntersectionObserver(function (entrees) {
+    entrees.forEach(function (entree) {
+      if (entree.isIntersecting) {
+        entree.target.classList.add('revealed');
+        observateur.unobserve(entree.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  cibles.forEach(function (el) { observateur.observe(el); });
+})();
+
+/* ────────────────────────────────────────────────────────────────
+   4. SCROLLSPY — lien actif dans la navigation desktop
+   ──────────────────────────────────────────────────────────────── */
+(function () {
+  var liens = document.querySelectorAll('.nav-desktop a[href^="#"]');
+  var sections = [];
+  liens.forEach(function (lien) {
+    var section = document.querySelector(lien.getAttribute('href'));
+    if (section) sections.push({ lien: lien, section: section });
+  });
+
+  var enAttente = false;
+  function majSpy() {
+    var repere = window.scrollY + window.innerHeight * 0.35;
+    var actif = null;
+    sections.forEach(function (paire) {
+      if (paire.section.offsetTop <= repere) actif = paire;
+    });
+    sections.forEach(function (paire) {
+      paire.lien.classList.toggle('actif', paire === actif);
+    });
+    enAttente = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!enAttente) {
+      enAttente = true;
+      window.requestAnimationFrame(majSpy);
+    }
+  }, { passive: true });
+  majSpy();
+})();
+
+/* ────────────────────────────────────────────────────────────────
+   5. FORMULAIRE — validation native + message de confirmation
+   (à remplacer par l'intégration Web3Forms / Formspree — voir le
+   commentaire au-dessus de la balise <form>)
+   ──────────────────────────────────────────────────────────────── */
+(function () {
+  var form = document.getElementById('form');
+  var merci = document.getElementById('form-merci');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    form.querySelectorAll('input, select, textarea, button').forEach(function (champ) {
+      champ.disabled = true;
+    });
+    merci.classList.add('visible');
+  });
+})();
+</script>
+</body>
+</html>
